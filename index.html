@@ -6,18 +6,27 @@
     body {
       text-align: center;
       font-family: 'Poppins', sans-serif;
-      margin-top: 100px;
+      margin: 0;
       background: radial-gradient(circle at center, #00c6ff, #0072ff);
       color: #fff;
       overflow: hidden;
     }
     h1 {
+      position: fixed; /* stays always visible */
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 48px;
       font-weight: bold;
       color: #ffffff;
       text-shadow: 2px 2px 6px #000, 0 0 20px #0ff;
-      -webkit-text-stroke: 1px #000; /* outline for clarity */
-      margin-bottom: 40px;
+      -webkit-text-stroke: 1px #000;
+      animation: glow 2s infinite alternate;
+      z-index: 1000;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00f, 0 0 20px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 40px #00f; }
     }
     button {
       padding: 16px 32px;
@@ -43,31 +52,28 @@
     #yesBtn {
       background: linear-gradient(145deg, #28a745, #00ff88);
     }
-    /* Softer watery effect */
-    body::before {
-      content: "";
+    .confetti, .tear {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/water.png');
-      opacity: 0.1; /* lighter so text stays visible */
-      animation: wave 12s linear infinite;
+      font-size: 24px;
+      animation: fall 2s linear forwards;
     }
-    @keyframes wave {
-      from { transform: translateX(0); }
-      to { transform: translateX(-200px); }
+    @keyframes fall {
+      to { transform: translateY(100vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
   <h1>💧 Will you be my girlfriend? 💞</h1>
-  <button id="yesBtn">YES 🌊</button>
-  <button id="noBtn">NO 💦</button>
+  <div style="margin-top:120px;">
+    <button id="yesBtn">YES 🌊</button>
+    <button id="noBtn">NO 💦</button>
+  </div>
 
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
 
+    // Move NO button around
     noBtn.addEventListener("mouseover", () => {
       const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
       const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
@@ -75,8 +81,32 @@
       noBtn.style.top = y + "px";
     });
 
+    // YES button → Party poppers 🎉
     yesBtn.addEventListener("click", () => {
-      alert("Yay! 💖 You said YES! 🌊✨");
+      for (let i = 0; i < 25; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerText = "🎉";
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.top = "-30px";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2000);
+      }
+      alert("Yay! 💖 You said YES! 🎊");
+    });
+
+    // NO button → Tears 💧
+    noBtn.addEventListener("click", () => {
+      for (let i = 0; i < 25; i++) {
+        const tear = document.createElement("div");
+        tear.className = "tear";
+        tear.innerText = "💧";
+        tear.style.left = Math.random() * window.innerWidth + "px";
+        tear.style.top = "-30px";
+        document.body.appendChild(tear);
+        setTimeout(() => tear.remove(), 2000);
+      }
+      alert("😢 You made me cry...");
     });
   </script>
 </body>
