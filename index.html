@@ -12,7 +12,7 @@
       overflow: hidden;
     }
     h1 {
-      margin-top: 80px; /* pushes question down */
+      margin-top: 100px; /* pushes question down */
       font-size: 48px;
       font-weight: bold;
       color: #ffffff;
@@ -25,11 +25,10 @@
       to { text-shadow: 0 0 20px #0ff, 0 0 40px #00f; }
     }
     .buttons {
-      margin-top: 60px; /* ensures buttons are below the question */
+      margin-top: 80px; /* ensures buttons are well below the question */
       display: flex;
       justify-content: center;
-      gap: 40px; /* spacing between YES and NO */
-      position: relative;
+      gap: 60px; /* spacing between YES and NO */
     }
     button {
       padding: 16px 32px;
@@ -51,7 +50,6 @@
     }
     #noBtn {
       background: linear-gradient(145deg, #ff416c, #ff4b2b);
-      position: relative; /* no longer overlaps */
     }
     .confetti, .tear {
       position: fixed;
