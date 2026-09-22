@@ -12,7 +12,7 @@
       overflow: hidden;
     }
     h1 {
-      position: fixed; /* stays always visible */
+      position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -28,6 +28,9 @@
       from { text-shadow: 0 0 10px #00f, 0 0 20px #0ff; }
       to { text-shadow: 0 0 20px #0ff, 0 0 40px #00f; }
     }
+    .buttons {
+      margin-top: 120px;
+    }
     button {
       padding: 16px 32px;
       font-size: 22px;
@@ -36,7 +39,6 @@
       border: none;
       border-radius: 12px;
       font-weight: bold;
-      background: linear-gradient(145deg, #00f, #0ff);
       color: white;
       box-shadow: 0 8px 15px rgba(0,0,0,0.3);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -45,12 +47,12 @@
       transform: scale(1.15);
       box-shadow: 0 12px 25px rgba(0,0,0,0.5);
     }
-    #noBtn {
-      position: absolute;
-      background: linear-gradient(145deg, #ff416c, #ff4b2b);
-    }
     #yesBtn {
       background: linear-gradient(145deg, #28a745, #00ff88);
+    }
+    #noBtn {
+      background: linear-gradient(145deg, #ff416c, #ff4b2b);
+      position: absolute;
     }
     .confetti, .tear {
       position: fixed;
@@ -63,17 +65,17 @@
   </style>
 </head>
 <body>
-  <h1>💧 Perpetual will you be my girlfriend? 💞</h1>
-  <div style="margin-top:120px;">
-    <button id="yesBtn">YES 🌊</button>
-    <button id="noBtn">NO 💦</button>
+  <h1>💧 Will you be my girlfriend? 💞</h1>
+  <div class="buttons">
+    <button id="yesBtn">YES 🎉</button>
+    <button id="noBtn">NO 😢</button>
   </div>
 
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
 
-    // Move NO button around
+    // Move NO button around playfully
     noBtn.addEventListener("mouseover", () => {
       const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
       const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
@@ -92,7 +94,7 @@
         document.body.appendChild(confetti);
         setTimeout(() => confetti.remove(), 2000);
       }
-      alert("Yay! 💖 You said YES! 🎊");
+      alert("Yay! 💖 You said YES!");
     });
 
     // NO button → Tears 💧
