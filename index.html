@@ -12,14 +12,12 @@
       overflow: hidden;
     }
     h1 {
-      font-size: 42px;
+      font-size: 48px;
       font-weight: bold;
-      text-shadow: 0 0 15px rgba(0,255,255,0.8), 0 0 30px rgba(0,0,255,0.6);
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00f, 0 0 20px #0ff; }
-      to { text-shadow: 0 0 20px #0ff, 0 0 40px #00f; }
+      color: #ffffff;
+      text-shadow: 2px 2px 6px #000, 0 0 20px #0ff;
+      -webkit-text-stroke: 1px #000; /* outline for clarity */
+      margin-bottom: 40px;
     }
     button {
       padding: 16px 32px;
@@ -45,15 +43,15 @@
     #yesBtn {
       background: linear-gradient(145deg, #28a745, #00ff88);
     }
-    /* Watery ripple effect */
+    /* Softer watery effect */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: url('https://www.transparenttextures.com/patterns/water.png');
-      opacity: 0.2;
-      animation: wave 10s linear infinite;
+      opacity: 0.1; /* lighter so text stays visible */
+      animation: wave 12s linear infinite;
     }
     @keyframes wave {
       from { transform: translateX(0); }
