@@ -7,57 +7,29 @@
       text-align: center;
       font-family: 'Poppins', sans-serif;
       margin-top: 100px;
-      background: linear-gradient(135deg, #ff4b2b, #ff416c);
-      color: white;
+      background: radial-gradient(circle at center, #00c6ff, #0072ff);
+      color: #fff;
+      overflow: hidden;
     }
     h1 {
-      font-size: 36px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      font-size: 42px;
+      font-weight: bold;
+      text-shadow: 0 0 15px rgba(0,255,255,0.8), 0 0 30px rgba(0,0,255,0.6);
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00f, 0 0 20px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 40px #00f; }
     }
     button {
-      padding: 14px 28px;
-      font-size: 20px;
+      padding: 16px 32px;
+      font-size: 22px;
       margin: 20px;
       cursor: pointer;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       font-weight: bold;
-      transition: transform 0.2s, background 0.3s;
-    }
-    #yesBtn {
-      background: #28a745;
+      background: linear-gradient(145deg, #00f, #0ff);
       color: white;
-    }
-    #yesBtn:hover {
-      transform: scale(1.1);
-      background: #218838;
-    }
-    #noBtn {
-      background: #dc3545;
-      color: white;
-      position: absolute;
-    }
-  </style>
-</head>
-<body>
-  <h1>Will you be my girlfriend? 💞</h1>
-  <button id="yesBtn">YES</button>
-  <button id="noBtn">NO</button>
-
-  <script>
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
-      const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
-
-    yesBtn.addEventListener("click", () => {
-      alert("Yay! 💖 You said YES!");
-    });
-  </script>
-</body>
-</html>
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s
